@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Carousel</title>
+<link rel="stylesheet" href="kit/theme.css">
+</head>
+<body>
+
+<section class="slide cover">
+  <div class="content">
+    <div class="kicker">Guide</div>
+    <h1>Your hook headline goes here</h1>
+    <p>One line that makes people swipe.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <h2>The key point</h2>
+    <ul>
+      <li>First supporting idea</li>
+      <li>Second supporting idea</li>
+      <li>Third supporting idea</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide stat">
+  <div class="content">
+    <div class="number">3×</div>
+    <h2>faster than before</h2>
+    <p>Back the claim with one short line.</p>
+  </div>
+</section>
+
+<!-- data-duration makes this slide an MP4 instead of a PNG -->
+<section class="slide flow" data-duration="5">
+  <div class="content">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="num">1</span>Connect your repo</div>
+      <div class="connector"></div>
+      <div class="step"><span class="num">2</span>Push a commit</div>
+      <div class="connector"></div>
+      <div class="step"><span class="num">3</span>Ship to production</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide quote">
+  <div class="content">
+    <blockquote>A short customer quote that proves the point.</blockquote>
+    <cite>— Name, Role at Company</cite>
+  </div>
+</section>
+
+<section class="slide cta">
+  <div class="content">
+    <h2>Call to action</h2>
+    <p>Follow for more. Save this for later.</p>
+    <span class="button">Learn more</span>
+  </div>
+</section>
+
+<script src="kit/chrome.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+  // One timeline per video slide, scoped to that slide; it starts at t=0 and must end within data-duration.
+  const flow = gsap.timeline({ delay: 0.3, defaults: { ease: 'power3.out' } });
+  flow.from('.flow h2', { y: 40, opacity: 0, duration: 0.6 });
+  for (const el of document.querySelectorAll('.flow .steps > *')) {
+    flow.from(el, el.classList.contains('connector')
+      ? { scaleY: 0, duration: 0.35 }
+      : { x: -60, opacity: 0, duration: 0.5 });
+  }
+</script>
+</body>
+</html>
