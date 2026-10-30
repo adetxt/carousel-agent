@@ -12,9 +12,9 @@ A six-slide launch example, using the assets in [`examples/carousel-agent-launch
 
 | 01 · The hook | 02 · The problem | 03 · The workflow |
 | :---: | :---: | :---: |
-| [![Slide 1: Stop designing carousels by hand](examples/carousel-agent-launch/slide-01.png)](examples/carousel-agent-launch/slide-01.png) | [![Slide 2: The repeated cycle of adjusting layouts, branding, and exporting](examples/carousel-agent-launch/slide-02.png)](examples/carousel-agent-launch/slide-02.png) | [![Slide 3: Describe the carousel, let the agent write HTML/CSS, and render PNGs with Chrome](examples/carousel-agent-launch/slide-03.png)](examples/carousel-agent-launch/slide-03.png) |
+| [<img src="examples/carousel-agent-launch/slide-01.png" alt="Slide 1: Stop designing carousels by hand" width="240" height="300">](examples/carousel-agent-launch/slide-01.png) | [<img src="examples/carousel-agent-launch/slide-02.png" alt="Slide 2: The repeated cycle of adjusting layouts, branding, and exporting" width="240" height="300">](examples/carousel-agent-launch/slide-02.png) | [<img src="examples/carousel-agent-launch/slide-03.png" alt="Slide 3: Describe the carousel, let the agent write HTML/CSS, and render PNGs with Chrome" width="240" height="300">](examples/carousel-agent-launch/slide-03.png) |
 | 04 · The brand kit | 05 · The features | 06 · The invitation |
-| [![Slide 4: Set your brand kit once and reuse it for each carousel](examples/carousel-agent-launch/slide-04.png)](examples/carousel-agent-launch/slide-04.png) | [![Slide 5: Social formats, reusable layouts, and a renderer with no npm dependencies](examples/carousel-agent-launch/slide-05.png)](examples/carousel-agent-launch/slide-05.png) | [![Slide 6: Try Carousel Agent at github.com/adetxt/carousel-agent](examples/carousel-agent-launch/slide-06.png)](examples/carousel-agent-launch/slide-06.png) |
+| [<img src="examples/carousel-agent-launch/slide-04.png" alt="Slide 4: Set your brand kit once and reuse it for each carousel" width="240" height="300">](examples/carousel-agent-launch/slide-04.png) | [<img src="examples/carousel-agent-launch/slide-05.png" alt="Slide 5: Social formats, reusable layouts, and a renderer with no npm dependencies" width="240" height="300">](examples/carousel-agent-launch/slide-05.png) | [<img src="examples/carousel-agent-launch/slide-06.png" alt="Slide 6: Try Carousel Agent at github.com/adetxt/carousel-agent" width="240" height="300">](examples/carousel-agent-launch/slide-06.png) |
 
 The “40% faster setup” figure on slide 4 is illustrative copy, not a measured benchmark.
 
@@ -54,7 +54,9 @@ The skill guides your agent to reuse the project's kit, write the slides, render
 - PNGs at the slide's CSS size, or higher resolution with `--scale 2`.
 - Animated MP4 slides using CSS, GSAP, or `requestAnimationFrame`. Add `data-duration` to a slide to render it as video.
 
-The default canvas is 1080 × 1350 (4:5). Change the kit's dimensions for square, vertical, or landscape content. MP4 output is a separate file per animated slide; LinkedIn document carousels use static slides.
+The default canvas is 1080 × 1350 (4:5). Set `--w` and `--h` once in the kit's `theme.css` for the chosen ratio: 1080 × 1080 (1:1), 1080 × 1920 (9:16), or 1200 × 675 (16:9). Every slide in a carousel must use those same dimensions; the renderer rejects size differences before exporting. Adjust content or spacing to fit instead of resizing individual slides.
+
+MP4 output is a separate file per animated slide; LinkedIn document carousels use static slides. Carousels containing video require even output dimensions so PNGs and MP4s stay the same size. Use `--scale 2` for an odd canvas dimension such as the 675px landscape height.
 
 ## Render from a checkout
 
@@ -101,3 +103,5 @@ examples/
 ```
 
 Read the [skill instructions](skills/carousel-agent/SKILL.md) for the slide contract, layout markup, animation guidance, and troubleshooting.
+
+Run the renderer checks with `node --test skills/carousel-agent/scripts/render.test.mjs` (requires Chrome, ffmpeg, and ffprobe).

@@ -223,12 +223,25 @@ async function evaluate(cdp, expression) {
   return result.value;
 }
 
+function validateSlideSizes(slides, canvas = slides[0]) {
+  for (const [i, slide] of slides.entries()) {
+    if (!(slide.width > 0 && slide.height > 0)) {
+      throw new Error(`Slide ${i + 1}: dimensions must be positive, got ${slide.width}x${slide.height}`);
+    }
+    if (slide.width !== canvas.width || slide.height !== canvas.height) {
+      throw new Error(`Slide ${i + 1}: got ${slide.width}x${slide.height}, expected ${canvas.width}x${canvas.height}. All slides must use the same fixed dimensions for the chosen ratio; set --w / --h once in the kit and remove per-slide size overrides.`);
+    }
+  }
+  if (slides.some((s) => s.duration !== null) && (canvas.width * scale % 2 !== 0 || canvas.height * scale % 2 !== 0)) {
+    throw new Error('Video slides require even output dimensions to match PNGs without resizing. Use --scale 2 for odd CSS dimensions, or choose a canvas and scale that produce even output dimensions.');
+  }
+}
+
 // Pipes PNG frames into ffmpeg as H.264 MP4 (yuv420p, even dimensions) for social-platform playback.
 async function recordVideo(ffmpeg, file, frameCount, renderFrame) {
   const proc = spawn(ffmpeg, [
     '-y', '-loglevel', 'error',
     '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'png', '-i', '-',
-    '-vf', 'scale=trunc(iw/2)*2:trunc(ih/2)*2',
     '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-movflags', '+faststart',
     file,
   ], { stdio: ['pipe', 'ignore', 'pipe'] });
@@ -278,11 +291,13 @@ async function render() {
     await setViewport(1080, 1350);
     let { slides } = await load();
     if (slides.length === 0) throw new Error(`No elements match selector "${opts.selector}" in ${input}`);
+    validateSlideSizes(slides);
 
     // Match the viewport to the slide so vw/vh units and media queries resolve against slide size.
-    await setViewport(Math.max(...slides.map((s) => s.width)), slides[0].height);
+    await setViewport(slides[0].width, slides[0].height);
     const measured = await evaluate(cdp, measure(opts.selector));
     slides = measured.slides;
+    validateSlideSizes(slides);
     for (const src of new Set(measured.broken)) console.warn(`WARNING: image failed to load: ${src}`);
     for (const [i, { duration }] of slides.entries()) {
       if (duration !== null && !(Number(duration) > 0)) {
@@ -304,7 +319,9 @@ async function render() {
         continue;
       }
       const seconds = Number(slide.duration);
-      const frame = (await load()).slides[i];
+      const reloaded = await load();
+      validateSlideSizes(reloaded.slides, slides[0]);
+      const frame = reloaded.slides[i];
       // Frame n shows time (n + 1) / fps: like a real browser, the first painted frame follows the
       // first animation tick, which libraries such as GSAP need to apply their initial state.
       await recordVideo(ffmpeg, `${name}.mp4`, Math.round(seconds * fps), async (n) => {
