@@ -248,7 +248,7 @@ async function recordVideo(ffmpeg, file, frameCount, renderFrame) {
 }
 
 async function render() {
-  const profileDir = mkdtempSync(join(tmpdir(), 'html-carousel-'));
+  const profileDir = mkdtempSync(join(tmpdir(), 'carousel-agent-'));
   let browser;
   let cdp;
   try {

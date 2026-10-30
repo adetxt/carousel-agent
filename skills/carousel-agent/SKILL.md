@@ -1,9 +1,9 @@
 ---
-name: html-carousel
+name: carousel-agent
 description: Use when asked to create a carousel, slide set, or multi-image social post (Instagram, LinkedIn, TikTok, X, Threads) as image or video files, to turn HTML/CSS slides into PNGs or MP4s, to animate an infographic or flow diagram slide, or to set up or reuse a branded carousel template or layout.
 ---
 
-# HTML Carousel
+# Carousel Agent
 
 ## Overview
 
