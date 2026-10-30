@@ -81,7 +81,8 @@ If the user wants branding but hasn't given a logo file, colors, or handle, ask 
 | Rule | Why |
 |------|-----|
 | Each slide is one element matching `.slide` (change with `--selector`) | One element = one image |
-| Fixed `px` size on the slide; `overflow: hidden` | Image size equals slide size; overflow is detected and warned about |
+| One fixed `px` width and height for every slide, set with the kit's `--w` / `--h` for the chosen ratio; `overflow: hidden` | Renderer rejects inconsistent dimensions before export; fit content without resizing individual slides |
+| Carousels containing video must have even output width and height after `--scale` | PNGs and MP4s keep identical dimensions; use `--scale 2` for odd CSS dimensions such as 1200 × 675 |
 | Sizes in `px`, not `vw`/`%` of body | Layout doesn't depend on the viewport |
 | Fonts: system stack, Google Fonts `@import`/`<link>`, or local `@font-face` | Renderer waits for `document.fonts.ready` |
 | Content must exist at load; animation only on `data-duration` slides | PNGs are captured right after load + fonts + image decode, at t=0 |
