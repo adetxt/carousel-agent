@@ -1,9 +1,9 @@
 // Brand chrome: adds header, footer and page numbers to every .slide.
 // Include with <script src="kit/chrome.js"></script> at the end of <body>.
 const BRAND = {
-  logo: 'logo.svg', // relative to this file; set to '' for no logo
-  name: 'Brand Name', // set to '' when the logo already contains the wordmark
-  handle: '@handle',
+  logo: '', // relative to this file; leave empty for a generic kit
+  name: '', // set when using a brand; omit when the logo contains the wordmark
+  handle: '', // optional; leave empty for a generic kit
 };
 
 (() => {

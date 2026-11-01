@@ -9,7 +9,7 @@ description: Use when asked to create a carousel, slide set, or multi-image soci
 
 Design each carousel slide as an HTML/CSS element, then render every slide to its own PNG — or MP4 for animated slides — with a bundled script that drives a locally installed Chrome. The files are the deliverable; the HTML is the source you iterate on.
 
-Brand and layouts live in a reusable **kit** shared by every carousel in the project, so each new carousel is just content.
+Layouts and visual tokens live in a reusable **kit** shared by every carousel in the project. The kit can stay generic, use an existing brand, or be customized for a new brand. Never require brand identity to make a carousel.
 
 Requires Node.js >= 22 and Chrome, Chromium, Edge, or Brave (or set `CHROME_PATH`). Video slides also need `ffmpeg` (or `FFMPEG_PATH`). No `npm install` is needed.
 
@@ -17,10 +17,9 @@ Requires Node.js >= 22 and Chrome, Chromium, Edge, or Brave (or set `CHROME_PATH
 
 ```
 carousels/
-  kit/                 # reusable: copied once, then edited for the brand
-    theme.css          #   brand tokens + layout classes
-    chrome.js          #   header, footer, page numbers (BRAND config at top)
-    logo.svg           #   brand logo (placeholder until replaced)
+  kit/                 # reusable: generic by default, optionally customized
+    theme.css          #   visual tokens + layout classes
+    chrome.js          #   optional brand chrome and page numbers (BRAND config at top)
   launch.html          # one file per carousel; links kit/theme.css and kit/chrome.js
   launch/              # rendered PNGs
 ```
@@ -29,9 +28,9 @@ carousels/
 
 ## Workflow
 
-1. **Find the kit.** Look for an existing kit in the project (`carousels/kit/`, or any directory with `theme.css` + `chrome.js`). If one exists, reuse it unchanged unless the user asks for a change. If several exist (one per brand), ask which one.
-2. **No kit? Create one.** Copy `<skill-dir>/assets/kit/` to `carousels/kit/` and apply the brand (see Branding).
-3. **Write the carousel.** Copy `<skill-dir>/assets/example.html` to `carousels/<name>.html` and replace the slides. One `<section class="slide <layout>"><div class="content">…</div></section>` per image, in order. Write only content; header, footer and page numbers come from the kit.
+1. **Resolve the brief.** Use details the user already gave. If the output ratio or platform is unclear, ask one concise question; accept a platform name (such as Instagram feed, Threads carousel, TikTok, or Instagram Story) and map it to a suitable size, or accept an exact ratio or dimensions. If the visual direction is unclear, ask about colors and light/dark treatment. If brand use is unclear, ask whether to use a generic kit, an existing brand kit, or a new brand treatment. Bundle related unknowns into one short question, and ask only for details needed to proceed. When the user has answered directly, proceed without asking again.
+2. **Find or create the kit.** Look for an existing kit in the project (`carousels/kit/`, or any directory with `theme.css` + `chrome.js`). Reuse it unchanged when it matches the user's choice. If several kits could apply, ask which one. If no suitable kit exists, copy `<skill-dir>/assets/kit/` to `carousels/kit/`; it is generic by default. Customize its tokens and optional brand chrome only when requested.
+3. **Write the carousel.** Copy `<skill-dir>/assets/example.html` to `carousels/<name>.html` and replace the slides. One `<section class="slide <layout>"><div class="content">…</div></section>` per image, in order. Write only content; optional header/footer and page numbers come from the kit.
 4. **Render:**
    ```bash
    node <skill-dir>/scripts/render.mjs carousels/<name>.html --out carousels/<name>
@@ -70,11 +69,11 @@ Use for slides where motion explains something: a flow building step by step, a 
 
 | What | Where |
 |------|-------|
-| Logo, brand name, handle | `BRAND` at the top of `kit/chrome.js`; copy the user's logo (SVG/PNG) into `kit/` and set `logo` |
-| Colors, font, radius, logo height | `:root` tokens in `kit/theme.css` |
+| Optional logo, brand name, handle | `BRAND` at the top of `kit/chrome.js`; use empty values to omit brand marks; copy a supplied logo (SVG/PNG) into `kit/` and set `logo` |
+| Colors, light/dark theme, font, radius, logo height | `:root` tokens in `kit/theme.css` |
 | Slide size | `--w` / `--h` in `kit/theme.css` |
 
-If the user wants branding but hasn't given a logo file, colors, or handle, ask before rendering. Never ship the placeholder `logo.svg`, `Brand Name`, or `@handle`. For a dark logo on a dark background (or vice versa), ask for the other variant rather than recoloring it.
+The starter kit is generic: omit logo, brand name, and handle until the user chooses branding. If branding is requested but a needed asset or identity detail is missing, ask briefly; do not substitute placeholder identity. For a dark logo on a dark background (or vice versa), ask for a suitable variant rather than recoloring it.
 
 ## Slide contract
 
