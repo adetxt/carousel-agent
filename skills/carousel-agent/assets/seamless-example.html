@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Seamless carousel example</title>
+<link rel="stylesheet" href="kit/theme.css">
+</head>
+<body>
+
+<section class="slide seamless cover">
+  <div class="seamless-window" aria-hidden="true"></div>
+  <div class="content" style="justify-content: center; padding-bottom: 0"><div class="kicker">A connected story</div><h1>One idea, across every slide.</h1><p>Swipe to follow the line.</p></div>
+</section>
+<section class="slide seamless">
+  <div class="seamless-window" aria-hidden="true"></div>
+  <div class="content"><h2>Keep the story moving.</h2><p>Each panel has its own message, while the artwork continues across the edge.</p></div>
+</section>
+<section class="slide seamless cta">
+  <div class="seamless-window" aria-hidden="true"></div>
+  <div class="content"><h2>Make it yours.</h2><p>Replace the artwork and copy with your own story.</p><span class="button">Get started</span></div>
+</section>
+
+<!-- One wide scene is cloned into each window. Design its coordinates across all panels. -->
+<template id="seamless-art">
+  <svg viewBox="0 0 3240 1350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="3240" height="1350" fill="#f4f7ff"/>
+    <path d="M0 1120 C500 700 650 1290 1080 1080 S1750 800 2160 1060 S2850 1250 3240 920" fill="none" stroke="#93b4fa" stroke-width="32"/>
+    <circle cx="1080" cy="1080" r="65" fill="#2563eb"/>
+    <circle cx="2160" cy="1060" r="65" fill="#2563eb"/>
+  </svg>
+</template>
+<script>
+  const panels = document.querySelectorAll('.slide.seamless');
+  const art = document.querySelector('#seamless-art');
+  panels.forEach((panel, index) => {
+    const window = panel.querySelector('.seamless-window');
+    const scene = document.createElement('div');
+    scene.className = 'seamless-scene';
+    scene.style.setProperty('--panel-count', panels.length);
+    scene.style.setProperty('--panel-index', index);
+    scene.append(art.content.cloneNode(true));
+    window.append(scene);
+  });
+</script>
+<script src="kit/chrome.js"></script>
+</body>
+</html>

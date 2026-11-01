@@ -80,3 +80,13 @@ ul, ol { padding-left: 1.1em; font-size: 44px; line-height: 1.45; display: grid;
   display: inline-block; padding: 28px 56px; border-radius: 999px;
   background: var(--accent); color: var(--on-accent); font-size: 40px; font-weight: 700;
 }
+
+/* Seamless: each clipped window shows one panel of a shared, wide scene. */
+.slide.seamless { position: relative; isolation: isolate; }
+.slide.seamless > :not(.seamless-window) { position: relative; z-index: 1; }
+.seamless-window { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.seamless-scene {
+  position: absolute; top: 0; left: calc(-1 * var(--panel-index) * var(--w));
+  width: calc(var(--panel-count) * var(--w)); height: var(--h);
+}
+.seamless-scene > svg { display: block; width: 100%; height: 100%; }

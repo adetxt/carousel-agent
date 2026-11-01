@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OFF / SCRIPT — Carousel preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ebe9e2;color:#181a17;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{min-height:100vh;display:grid;grid-template-columns:minmax(230px,360px) minmax(0,470px);gap:clamp(32px,7vw,110px);justify-content:center;align-items:center;padding:48px 24px}.intro{align-self:center}.label{font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}.intro h1{font:normal clamp(52px,6vw,84px)/.95 Georgia,serif;letter-spacing:-.06em;margin:25px 0}.intro h1 em{color:#5b6f19}.intro p{max-width:300px;color:#66685d;line-height:1.6;font-size:15px}.hint{display:inline-flex;align-items:center;gap:12px;margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.06em}.hint span{font-size:23px}.post{background:#fff;border:1px solid #dadada;border-radius:4px;overflow:hidden;box-shadow:0 20px 70px #191c1214}.post-header{height:66px;display:flex;align-items:center;gap:11px;padding:0 15px}.avatar{width:36px;height:36px;border-radius:50%;background:#171917;color:#d5ff3f;display:grid;place-items:center;font:italic 700 16px Georgia,serif}.identity{font-size:13px;font-weight:700;line-height:1.35}.identity small{display:block;font-size:11px;font-weight:400;color:#626262}.more{margin-left:auto;font-weight:700;letter-spacing:2px}.media{position:relative;background:#111}.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y}.track::-webkit-scrollbar{display:none}.track img{display:block;flex:0 0 100%;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start}.arrow{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border:0;border-radius:50%;background:#ffffffe8;color:#252525;font-size:20px;line-height:1;cursor:pointer;box-shadow:0 1px 5px #0003;display:grid;place-items:center}.arrow:hover{background:white}.arrow:focus-visible,.dot:focus-visible{outline:3px solid #5473df;outline-offset:3px}.arrow[hidden]{display:none}.prev{left:12px}.next{right:12px}.count{position:absolute;right:12px;top:12px;border-radius:20px;padding:6px 10px;color:white;background:#111b;font-size:12px}.post-actions{position:relative;display:flex;align-items:center;gap:16px;padding:14px 16px 6px}.post-actions svg{width:24px;height:24px;fill:none;stroke:#181818;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}.post-actions .save{margin-left:auto}.dots{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:5px}.dot{width:7px;height:7px;border:0;border-radius:50%;background:#c6c6c6;padding:0;cursor:pointer}.dot[aria-current="true"]{background:#3897f0}.caption{padding:8px 16px 18px;font-size:13px;line-height:1.5}.caption b{margin-right:5px}.caption p{margin:2px 0}.caption .muted{color:#777}.caption .date{margin-top:8px;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#8b8b8b}@media(max-width:700px){body{background:#fff}.wrap{display:flex;flex-direction:column;align-items:stretch;padding:0;gap:0;min-height:0}.intro{padding:25px 18px 20px}.intro h1{font-size:47px;margin:12px 0}.intro p{margin:0;max-width:none}.hint{margin-top:10px}.post{width:100%;max-width:470px;margin:auto;border-left:0;border-right:0;border-radius:0;box-shadow:none}}@media(prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="intro"><div class="label">Carousel preview / 04 slides</div><h1>One story.<br><em>Four frames.</em></h1><p>Swipe through the editorial to see how the images and details carry across each edge.</p><div class="hint"><span aria-hidden="true">↔</span> Swipe, use arrows or keyboard</div></div>
+  <article class="post" aria-label="Instagram-style carousel preview">
+    <div class="post-header"><div class="avatar" aria-hidden="true">os</div><div class="identity">offscript.journal<small>Editorial preview</small></div><span class="more" aria-hidden="true">•••</span></div>
+    <div class="media"><div class="track" id="track" tabindex="0" aria-label="Carousel slides. Use left and right arrow keys.">
+      <img src="slides/slide-01.png" width="1080" height="1350" alt="Slide 1: Wear your own story.">
+      <img src="slides/slide-02.png" width="1080" height="1350" alt="Slide 2: Less fitting in. More standing out.">
+      <img src="slides/slide-03.png" width="1080" height="1350" alt="Slide 3: Mix it. Move in it. Make it yours.">
+      <img src="slides/slide-04.png" width="1080" height="1350" alt="Slide 4: Dress like you mean it.">
+    </div><span class="count" aria-live="polite">1 / 4</span><button class="arrow prev" aria-label="Previous slide" hidden>‹</button><button class="arrow next" aria-label="Next slide">›</button></div>
+    <div class="post-actions" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 4.7a5.3 5.3 0 0 0-7.5 0L12 6l-1.3-1.3a5.3 5.3 0 0 0-7.5 7.5l1.3 1.3L12 21l7.5-7.5 1.3-1.3a5.3 5.3 0 0 0 0-7.5z"/></svg><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.8-5A8.5 8.5 0 1 1 21 11.5z"/></svg><svg viewBox="0 0 24 24"><path d="M22 2 9.5 14.5M22 2l-7 20-5.5-7.5L2 9z"/></svg><div class="dots"></div><svg class="save" viewBox="0 0 24 24"><path d="M5 3h14v18l-7-4-7 4z"/></svg></div>
+    <div class="caption"><p><b>offscript.journal</b> Style has no straight lines. Wear your own story.</p><p class="muted">A fictional editorial created for this preview.</p><div class="date">The style issue · 01</div></div>
+  </article>
+</main>
+<script>
+const track=document.querySelector('#track'), images=[...track.querySelectorAll('img')], prev=document.querySelector('.prev'), next=document.querySelector('.next'), count=document.querySelector('.count'), dots=document.querySelector('.dots');
+let index=0;
+// Dots are controls, so keep them outside the decorative action icons' accessibility tree.
+dots.parentElement.removeAttribute('aria-hidden');
+for(const svg of document.querySelectorAll('.post-actions svg')) svg.setAttribute('aria-hidden','true');
+images.forEach((_,i)=>{const button=document.createElement('button');button.className='dot';button.setAttribute('aria-label',`Go to slide ${i+1}`);button.addEventListener('click',()=>go(i));dots.append(button)});
+function update(){index=Math.max(0,Math.min(images.length-1,Math.round(track.scrollLeft/track.clientWidth)));count.textContent=`${index+1} / ${images.length}`;prev.hidden=index===0;next.hidden=index===images.length-1;[...dots.children].forEach((dot,i)=>dot.setAttribute('aria-current',i===index?'true':'false'))}
+function go(i){const target=Math.max(0,Math.min(images.length-1,i));track.scrollTo({left:target*track.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}
+prev.addEventListener('click',()=>go(index-1));next.addEventListener('click',()=>go(index+1));track.addEventListener('scroll',update,{passive:true});track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();go(index+(e.key==='ArrowRight'?1:-1))}});window.addEventListener('resize',()=>{track.scrollLeft=index*track.clientWidth;update()});update();
+</script>
+</body></html>

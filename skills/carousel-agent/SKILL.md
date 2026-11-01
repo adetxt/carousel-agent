@@ -1,6 +1,6 @@
 ---
 name: carousel-agent
-description: Use when asked to create a carousel, slide set, or multi-image social post (Instagram, LinkedIn, TikTok, X, Threads) as image or video files, to turn HTML/CSS slides into PNGs or MP4s, to animate an infographic or flow diagram slide, or to set up or reuse a branded carousel template or layout.
+description: Use when asked to create a carousel, slide set, or multi-image social post, including seamless carousels (Instagram, LinkedIn, TikTok, X, Threads), as image or video files, to turn HTML/CSS slides into PNGs or MP4s, to animate an infographic or flow diagram slide, or to set up or reuse a branded carousel template or layout.
 ---
 
 # Carousel Agent
@@ -54,6 +54,15 @@ Add one class next to `slide`. Content markup per layout:
 | `cta` | `h2` + `p` + `span.button` — last slide |
 
 **New or changed layout?** Add a `.slide.<name>` rule to `kit/theme.css` and use the class, so later carousels can reuse it. Never put layout CSS in a carousel's HTML file. A one-off tweak for a single slide may use an inline `style`.
+
+## Seamless carousels
+
+Use when the artwork should continue across adjacent slides. Copy `<skill-dir>/assets/seamless-example.html` alongside the kit and use its shared scene and panel markup. The renderer still exports one PNG per `.slide`.
+
+- Design a single wide scene in the `#seamless-art` template. Its coordinate width is the panel width multiplied by the number of panels; its height is the slide height. The example uses a 3240 × 1350 SVG for three 1080 × 1350 panels. Adjust the SVG `viewBox` when the count or canvas size changes.
+- Keep the `.slide.seamless` panels in order, each with a `.seamless-window` and its own `.content`. The example script clones the scene and offsets it by one slide width per panel; keep the script before `kit/chrome.js`. Use the same scene for every adjoining panel and avoid per-panel transforms or spacing on the windows.
+- Keep headlines, body copy, and essential details within each panel's safe area. Use the edges for connecting artwork, not words that must be read across a swipe. Do not rely on platform viewers displaying two slides simultaneously.
+- Render static PNGs, then inspect the individual slides and a side-by-side assembly at full size. Check that artwork meets at every boundary, content remains readable, and branding does not obscure the joins. For animated slides, design and validate motion separately; the renderer captures each MP4 independently.
 
 ## Video slides
 
