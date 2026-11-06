@@ -2,6 +2,9 @@
 
 **Your next carousel starts with a prompt.**
 
+The [static landing page](docs/index.html) showcases the skill and its examples.
+See [hosting instructions](docs/README.md) to preview it or publish it on GitHub Pages.
+
 Carousel Agent turns a brief into social slides. Describe what you want, give your agent a reference or brand kit if you have one, and ask for changes in conversation. Your agent handles the layout, editable source, rendering, and visual inspection.
 
 ## Install and update

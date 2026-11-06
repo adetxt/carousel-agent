@@ -1,0 +1,88 @@
+{
+  "source": "2026-11-01-carousel-agent-flex",
+  "assets": [
+    {
+      "order": 1,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-01-bbafe9b843ea.png",
+      "type": "image",
+      "bytes": 107491,
+      "sha256": "bbafe9b843eafd30b2925b534c7dd94580faefe4910350668253620980b14621",
+      "alt": "This carousel was made with Carousel Agent. One prompt. Swipe for proof.",
+      "fallback": "assets/flex-01.webp"
+    },
+    {
+      "order": 2,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-02-7007c85b07de.png",
+      "type": "image",
+      "bytes": 93564,
+      "sha256": "7007c85b07de48b8953ba057785a28db7b3c389fefe22d7dbe02f91990d155e2",
+      "alt": "Say less. Show more. Cover, stat, quote and flow slide designs.",
+      "fallback": "assets/flex-02.webp"
+    },
+    {
+      "order": 3,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-03-96e52ef5cc22.png",
+      "type": "image",
+      "bytes": 87677,
+      "sha256": "96e52ef5cc226d65d282f3fb7a162a938c3b3fa6bff0e4b8804ada7fa89ecd40",
+      "alt": "On brand. Your look, every swipe.",
+      "fallback": "assets/flex-03.webp"
+    },
+    {
+      "order": 4,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-04-440615c28e92.mp4",
+      "type": "video",
+      "bytes": 150784,
+      "sha256": "440615c28e923ade609ba56770ec489f645296312984ed6b5f7f66f373dad950",
+      "alt": "It moves. Animated sequence: one prompt, a whole carousel, ready to post.",
+      "fallback": "assets/flex-04.mp4",
+      "poster": "assets/flex-04.webp"
+    },
+    {
+      "order": 5,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-05-c905f250cb9c.mp4",
+      "type": "video",
+      "bytes": 836328,
+      "sha256": "c905f250cb9c6b9f7c815ce971a1c0e5744dd503754f733e7741e0af2116cfa6",
+      "alt": "It shows off. Three animated slide cards fan out in perspective.",
+      "fallback": "assets/flex-05.mp4",
+      "poster": "assets/flex-05.webp"
+    },
+    {
+      "order": 6,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-06-9be8e0b4d6cc.png",
+      "type": "image",
+      "bytes": 72100,
+      "sha256": "9be8e0b4d6cc2bb6974bfe70b4739e3c1a2bbc152308de1bfdc79497faedfb5e",
+      "alt": "Even the swipe\u2026 The ribbon and illustrated slide continue into the next panel.",
+      "fallback": "assets/flex-06.webp"
+    },
+    {
+      "order": 7,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-07-51d35d997528.png",
+      "type": "image",
+      "bytes": 76660,
+      "sha256": "51d35d99752886b8337c5cf7e9a9ae934a5a0c59f3908dce32ae8cc3b8f40da8",
+      "alt": "\u2026is part of the design. The shared artwork continues from the previous panel.",
+      "fallback": "assets/flex-07.webp"
+    },
+    {
+      "order": 8,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-08-e6ce64148919.png",
+      "type": "image",
+      "bytes": 76709,
+      "sha256": "e6ce641489199bd5e9c8176710ed18535140bdc329d95de522d4191bdfc40355",
+      "alt": "Any format. Portrait, square, vertical and wide. PNG and MP4. Editable and reusable.",
+      "fallback": "assets/flex-08.webp"
+    },
+    {
+      "order": 9,
+      "url": "https://script-alchemy-content-media.adetxt.workers.dev/carousel-agent/2026-11-01-flex/publish/slide-09-34acc0d3ac97.png",
+      "type": "image",
+      "bytes": 69588,
+      "sha256": "34acc0d3ac977ae24ffa3eefe7a7c66be59164945ce34ac6a57419af9aa600a8",
+      "alt": "Your turn. Get Carousel Agent at github.com/adetxt/carousel-agent.",
+      "fallback": "assets/flex-09.webp"
+    }
+  ]
+}
